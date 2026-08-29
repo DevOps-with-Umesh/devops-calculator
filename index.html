@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DevOps Calculator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 400px;
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            text-align: center;
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #0284c7;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0369a1;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #020617;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .result-title {
+            color: #94a3b8;
+        }
+
+        #result {
+            font-size: 30px;
+            color: #38bdf8;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #64748b;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>DevOps Calculator</h1>
+
+    <p class="subtitle">
+        Dockerized Web Application
+    </p>
+
+    <input
+        type="number"
+        id="number1"
+        placeholder="Enter first number"
+    >
+
+    <input
+        type="number"
+        id="number2"
+        placeholder="Enter second number"
+    >
+
+    <div class="buttons">
+
+        <button onclick="calculate('+')">+</button>
+
+        <button onclick="calculate('-')">−</button>
+
+        <button onclick="calculate('*')">×</button>
+
+        <button onclick="calculate('/')">÷</button>
+
+    </div>
+
+    <div class="result">
+
+        <div class="result-title">
+            Result
+        </div>
+
+        <div id="result">
+            0
+        </div>
+
+    </div>
+
+    <div class="footer">
+        GitHub → Jenkins → Docker → Docker Hub
+    </div>
+
+</div>
+
+
+<script>
+
+function calculate(operator) {
+
+    const number1 = parseFloat(
+        document.getElementById("number1").value
+    );
+
+    const number2 = parseFloat(
+        document.getElementById("number2").value
+    );
+
+    const resultElement =
+        document.getElementById("result");
+
+
+    if (isNaN(number1) || isNaN(number2)) {
+
+        resultElement.innerText =
+            "Enter numbers";
+
+        return;
+    }
+
+
+    let result;
+
+
+    switch (operator) {
+
+        case "+":
+
+            result = number1 + number2;
+
+            break;
+
+
+        case "-":
+
+            result = number1 - number2;
+
+            break;
+
+
+        case "*":
+
+            result = number1 * number2;
+
+            break;
+
+
+        case "/":
+
+            if (number2 === 0) {
+
+                resultElement.innerText =
+                    "Cannot divide by zero";
+
+                return;
+            }
+
+            result = number1 / number2;
+
+            break;
+
+    }
+
+
+    resultElement.innerText = result;
+
+}
+
+</script>
+
+</body>
+
+</html>
